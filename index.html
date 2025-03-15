@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ammar Osman | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -21,37 +22,41 @@
         </nav>
     </header>
     
-    <section id="about">
+    <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>Experienced Senior Product Manager at Marriott International with a track record of driving revenue growth, optimizing processes, and enhancing customer experience. Passionate about innovation, business strategy, and data-driven decision-making.</p>
     </section>
     
-    <section id="experience">
+    <section id="experience" class="fade-in">
         <h2>Experience</h2>
-        <p><strong>Marriott International | Senior Product Manager</strong> (2022 - Present)</p>
-        <ul>
-            <li>Led the development and launch of a premium product offering, generating $2.5M in projected revenue.</li>
-            <li>Improved performance by 8%, contributing to a $25.1B annual revenue increase.</li>
-        </ul>
-        <p><strong>Product Manager | Marriott International</strong> (2018 - 2022)</p>
-        <ul>
-            <li>Orchestrated strategic product rollouts, saving $1.5M annually in customer support costs.</li>
-            <li>Generated $3M in additional quarterly revenue via customer segmentation and targeted product launches.</li>
-        </ul>
+        <button class="accordion">Marriott International | Senior Product Manager (2022 - Present)</button>
+        <div class="panel">
+            <ul>
+                <li>Led the development and launch of a premium product offering, generating $2.5M in projected revenue.</li>
+                <li>Implemented process reengineering strategies that contributed to a $25.1B annual revenue increase.</li>
+                <li>Achieved $800K in annual cost savings by optimizing vendor management.</li>
+            </ul>
+        </div>
+        <button class="accordion">Marriott International | Product Manager (2018 - 2022)</button>
+        <div class="panel">
+            <ul>
+                <li>Championed $2.1M in annual growth through improved product roadmaps.</li>
+                <li>Led a product trial with 50 agents and scaled it to support over 4,000 personnel.</li>
+                <li>Generated $3M in additional quarterly revenue through targeted product launches.</li>
+            </ul>
+        </div>
     </section>
     
-    <section id="skills">
+    <section id="skills" class="fade-in">
         <h2>Skills</h2>
         <ul>
-            <li>Product Roadmapping</li>
-            <li>Market Research</li>
-            <li>Go-to-Market Strategy</li>
-            <li>Data Analytics & A/B Testing</li>
-            <li>Agile/Scrum/Kanban Methodologies</li>
+            <li>Product Roadmapping & Feature Prioritization</li>
+            <li>Market Research & Competitive Analysis</li>
+            <li>Go-to-Market Strategy & Product Adoption</li>
         </ul>
     </section>
     
-    <section id="projects">
+    <section id="projects" class="fade-in">
         <h2>Projects & Achievements</h2>
         <ul>
             <li>Developed a VR training program reducing onboarding time by 14%.</li>
@@ -59,14 +64,140 @@
         </ul>
     </section>
     
-    <section id="contact">
+    <section id="contact" class="fade-in">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:ammar.osman316@gmail.com">ammar.osman316@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ammar-osman/">linkedin.com/in/ammar-osman</a></p>
+        <form action="https://formspree.io/f/example" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
     </section>
     
     <footer>
         <p>&copy; 2025 Ammar Osman. All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        $(document).ready(function() {
+            $(".fade-in").hide().fadeIn(2000);
+            $(".accordion").click(function() {
+                $(this).toggleClass("active");
+                var panel = $(this).next();
+                panel.slideToggle(300);
+            });
+        });
+    </script>
 </body>
 </html>
+
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+section {
+    padding: 30px;
+    background: white;
+    margin: 30px auto;
+    width: 80%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #2a5298;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #1e3c72;
+    color: white;
+}
+
+button.accordion {
+    background-color: #2a5298;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+button.accordion:hover {
+    background-color: #1e3c72;
+}
+
+.panel {
+    display: none;
+    padding: 10px;
+    background: #f4f4f4;
+    border-left: 5px solid #2a5298;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+form input, form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    background: #2a5298;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #1e3c72;
+}
